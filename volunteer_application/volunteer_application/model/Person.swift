@@ -8,7 +8,19 @@
 
 import Foundation
 
-class Person {
+class Person: Hashable, Equatable {
+    static func == (lhs: Person, rhs: Person) -> Bool {
+        return lhs.first_name == rhs.first_name && lhs.last_name == rhs.last_name && lhs.email == rhs.email
+    }
+    // MARK: Hashable
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(first_name)
+        hasher.combine(last_name)
+        hasher.combine(email)
+    }
+
+    
+    
     init(_ first_name: String, _ last_name: String, _ group: String?, _ email: String, _ social: String?, _ phone_number: String?) {
         self.first_name = first_name
         self.last_name = last_name

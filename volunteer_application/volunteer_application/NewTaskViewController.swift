@@ -67,7 +67,7 @@ class NewTaskViewController: UIViewController, UITextFieldDelegate {
         let title = titleTextField.text ?? ""
         let body = bodyTextField.text
         
-        task = Task(title, body)
+        task = Task(title)
     }
 
 }

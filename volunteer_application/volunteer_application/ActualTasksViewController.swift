@@ -10,7 +10,7 @@ import UIKit
 
 class ActualTasksViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-        var tasks = Array(repeating: Task("Here will be tasks", "And here will be an advertisement ;)"), count: 10)
+        var tasks = Array(repeating: Task("Here will be tasks"), count: 10)
 
         var tableView: UITableView {
             return view as! UITableView
