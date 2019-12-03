@@ -18,6 +18,9 @@
 		D35BF8DA2358C7CF00774B72 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35BF8D92358C7CF00774B72 /* ProfileViewController.swift */; };
 		D37F1652238D94E3001CB050 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37F1651238D94E3001CB050 /* Task.swift */; };
 		D37F1654238EF8A2001CB050 /* NewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37F1653238EF8A2001CB050 /* NewTaskViewController.swift */; };
+		D37F16562396DC91001CB050 /* Hall.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37F16552396DC91001CB050 /* Hall.swift */; };
+		D37F16582396DCA9001CB050 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37F16572396DCA9001CB050 /* Person.swift */; };
+		D37F165A2396DCC7001CB050 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37F16592396DCC7001CB050 /* Event.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +37,9 @@
 		D35BF8D92358C7CF00774B72 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D37F1651238D94E3001CB050 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		D37F1653238EF8A2001CB050 /* NewTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskViewController.swift; sourceTree = "<group>"; };
+		D37F16552396DC91001CB050 /* Hall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hall.swift; sourceTree = "<group>"; };
+		D37F16572396DCA9001CB050 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		D37F16592396DCC7001CB050 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +92,9 @@
 			isa = PBXGroup;
 			children = (
 				D37F1651238D94E3001CB050 /* Task.swift */,
+				D37F16552396DC91001CB050 /* Hall.swift */,
+				D37F16572396DCA9001CB050 /* Person.swift */,
+				D37F16592396DCC7001CB050 /* Event.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -161,11 +170,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D37F16582396DCA9001CB050 /* Person.swift in Sources */,
+				D37F165A2396DCC7001CB050 /* Event.swift in Sources */,
 				D35BF8DA2358C7CF00774B72 /* ProfileViewController.swift in Sources */,
 				D35BF8C82353945500774B72 /* ChatsViewController.swift in Sources */,
 				D37F1654238EF8A2001CB050 /* NewTaskViewController.swift in Sources */,
 				D35BF8C62353945500774B72 /* ActualTasksViewController.swift in Sources */,
 				D35BF8D82358672200774B72 /* EventsViewController.swift in Sources */,
+				D37F16562396DC91001CB050 /* Hall.swift in Sources */,
 				D35BF8C22353945500774B72 /* AppDelegate.swift in Sources */,
 				D37F1652238D94E3001CB050 /* Task.swift in Sources */,
 				D35BF8C42353945500774B72 /* SceneDelegate.swift in Sources */,
