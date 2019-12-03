@@ -17,6 +17,7 @@
 		D35BF8D82358672200774B72 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35BF8D72358672200774B72 /* EventsViewController.swift */; };
 		D35BF8DA2358C7CF00774B72 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35BF8D92358C7CF00774B72 /* ProfileViewController.swift */; };
 		D37F1652238D94E3001CB050 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37F1651238D94E3001CB050 /* Task.swift */; };
+		D37F1654238EF8A2001CB050 /* NewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37F1653238EF8A2001CB050 /* NewTaskViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		D35BF8D72358672200774B72 /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
 		D35BF8D92358C7CF00774B72 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D37F1651238D94E3001CB050 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		D37F1653238EF8A2001CB050 /* NewTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 				D35BF8D12353945800774B72 /* Info.plist */,
 				D35BF8D72358672200774B72 /* EventsViewController.swift */,
 				D35BF8D92358C7CF00774B72 /* ProfileViewController.swift */,
+				D37F1653238EF8A2001CB050 /* NewTaskViewController.swift */,
 			);
 			path = volunteer_application;
 			sourceTree = "<group>";
@@ -160,6 +163,7 @@
 			files = (
 				D35BF8DA2358C7CF00774B72 /* ProfileViewController.swift in Sources */,
 				D35BF8C82353945500774B72 /* ChatsViewController.swift in Sources */,
+				D37F1654238EF8A2001CB050 /* NewTaskViewController.swift in Sources */,
 				D35BF8C62353945500774B72 /* ActualTasksViewController.swift in Sources */,
 				D35BF8D82358672200774B72 /* EventsViewController.swift in Sources */,
 				D35BF8C22353945500774B72 /* AppDelegate.swift in Sources */,

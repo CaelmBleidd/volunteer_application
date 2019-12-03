@@ -15,7 +15,18 @@ class ActualTasksViewController: UIViewController, UITableViewDataSource, UITabl
         var tableView: UITableView {
             return view as! UITableView
         }
-
+    
+        //MARK: Actions
+        @IBAction func unwindToTasksList(sender: UIStoryboardSegue) {
+            if let sourceViewController = sender.source as? NewTaskViewController, let task = sourceViewController.task {
+                let newIndexPath = IndexPath(row: tasks.count, section: 0)
+                tasks.append(task)
+                tableView.insertRows(at: [newIndexPath], with: .automatic)
+            }
+        }
+    
+    
+    
         override func viewDidLoad() {
             super.viewDidLoad()
             tableView.dataSource = self
@@ -53,10 +64,10 @@ class ActualTasksViewController: UIViewController, UITableViewDataSource, UITabl
             return 55
         }
 
-        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            tasks.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-        }
+//        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//            tasks.remove(at: indexPath.row)
+//            tableView.deleteRows(at: [indexPath], with: .automatic)
+//        }
 
         func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
             guard editingStyle == .delete else {
