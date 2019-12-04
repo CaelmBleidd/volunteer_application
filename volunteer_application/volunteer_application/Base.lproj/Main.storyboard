@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Your tasks-->
+        <!--Actual Tasks View Controller-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
                 <viewController id="9pv-A4-QxB" customClass="ActualTasksViewController" customModule="volunteer_application" customModuleProvider="target" sceneMemberID="viewController">
@@ -44,7 +44,17 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Your tasks" id="Fho-T6-bMU">
+                    <navigationItem key="navigationItem" id="Fho-T6-bMU">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="FAu-fK-vy0">
+                            <rect key="frame" x="0.0" y="0.0" width="0.0" height="33"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title=" New"/>
+                                <segment title="In progress"/>
+                                <segment title="All"/>
+                            </segments>
+                        </segmentedControl>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="e4T-tT-83M">
                             <connections>
                                 <segue destination="WdW-MQ-vLW" kind="presentation" identifier="AddItem" id="fQV-qt-c0E"/>
@@ -61,11 +71,11 @@
             <objects>
                 <viewController id="NUq-5e-WHt" customClass="NewTaskViewController" customModule="volunteer_application" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="doN-RZ-2id">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="OK4-vS-Tiz">
-                                <rect key="frame" x="0.0" y="108" width="414" height="138"/>
+                                <rect key="frame" x="0.0" y="76" width="414" height="138"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tgS-XF-bzR">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="34"/>
@@ -122,7 +132,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Rk-wd-3gW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="7Fe-Y3-SR2" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3584" y="-320"/>
+            <point key="canvasLocation" x="3625" y="-320"/>
         </scene>
         <!-- Chat-->
         <scene sceneID="wg7-f3-ORb">
@@ -284,7 +294,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KWf-QO-DYx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2625" y="-741"/>
+            <point key="canvasLocation" x="2648" y="-729"/>
         </scene>
     </scenes>
     <resources>
@@ -292,6 +302,6 @@
         <image name="second" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Gjv-kY-8xk"/>
+        <segue reference="ohh-vO-mU0"/>
     </inferredMetricsTieBreakers>
 </document>

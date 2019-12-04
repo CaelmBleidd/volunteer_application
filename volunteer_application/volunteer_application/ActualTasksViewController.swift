@@ -13,21 +13,8 @@ class ActualTasksViewController: UITableViewController {
 
     //MARK: Properties
     var tasks = [Task]()
+    
 
-    //MARK: Actions
-    @IBAction func unwindToTasksList(sender: UIStoryboardSegue) {
-        if let sourceViewController = sender.source as? NewTaskViewController, let task = sourceViewController.task {
-            if let selectedIndexPath = tableView.indexPathForSelectedRow {
-                tasks[selectedIndexPath.row] = task
-                tableView.reloadRows(at: [selectedIndexPath], with: .none)
-            } else {
-                let newIndexPath = IndexPath(row: tasks.count, section: 0)
-                tasks.append(task)
-                tableView.insertRows(at: [newIndexPath], with: .automatic)
-            }
-
-        }
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,8 +25,9 @@ class ActualTasksViewController: UITableViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+        
     }
-    
+
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -59,19 +47,48 @@ class ActualTasksViewController: UITableViewController {
         return cell
     }
 
-
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        switch editingStyle {
-        case .delete:
-            tasks.remove(at: indexPath.row)
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let deleteTitle = NSLocalizedString("Delete", comment: "Delete")
+        let deleteAction = UIContextualAction(style: .normal, title: deleteTitle, handler: { (deleteAction, view, completionHandler) in
+            self.tasks.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .bottom)
-        case .insert:
-            return
-        default:
-            return
-        }
+            completionHandler(true)
+        })
+        deleteAction.backgroundColor = .red
+        
+        let processingTitle = NSLocalizedString("Processing", comment: "Processing")
+        let processingAction = UIContextualAction(style: .normal, title: processingTitle, handler: {
+            (processingAction, view, completionHandler) in
+            //todo
+        })
+        
+        
+        let configuration = UISwipeActionsConfiguration(actions: [processingAction, deleteAction])
+        return configuration
+    }
+    
+    override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        //todo
+        return nil
     }
 
+    
+    //MARK: Actions
+    @IBAction func unwindToTasksList(sender: UIStoryboardSegue) {
+        if let sourceViewController = sender.source as? NewTaskViewController, let task = sourceViewController.task {
+            if let selectedIndexPath = tableView.indexPathForSelectedRow {
+                tasks[selectedIndexPath.row] = task
+                tableView.reloadRows(at: [selectedIndexPath], with: .none)
+            } else {
+                let newIndexPath = IndexPath(row: tasks.count, section: 0)
+                tasks.append(task)
+                tableView.insertRows(at: [newIndexPath], with: .automatic)
+            }
+
+        }
+    }
+    
     
     //MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
