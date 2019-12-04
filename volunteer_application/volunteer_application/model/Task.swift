@@ -8,6 +8,7 @@
 
 import Foundation
 
+
 class Task {
     init(_ title: String) {
         self.title = title
@@ -21,8 +22,11 @@ class Task {
         self.target_halls = target_halls
         self.event = event
     }
+    
     var title: String
     var body: String? = nil
     var target_halls = Array<Hall>()
     var event: Event?
+    
+    //todo images
 }

@@ -21,4 +21,5 @@ class Hall {
     
     var title: String
     var members: Array<Person>
+    
 }

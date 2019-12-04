@@ -21,6 +21,7 @@
 		D37F16562396DC91001CB050 /* Hall.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37F16552396DC91001CB050 /* Hall.swift */; };
 		D37F16582396DCA9001CB050 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37F16572396DCA9001CB050 /* Person.swift */; };
 		D37F165A2396DCC7001CB050 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37F16592396DCC7001CB050 /* Event.swift */; };
+		D37F16602397DDF2001CB050 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37F165F2397DDF2001CB050 /* TaskTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		D37F16552396DC91001CB050 /* Hall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hall.swift; sourceTree = "<group>"; };
 		D37F16572396DCA9001CB050 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		D37F16592396DCC7001CB050 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		D37F165F2397DDF2001CB050 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 				D35BF8D72358672200774B72 /* EventsViewController.swift */,
 				D35BF8D92358C7CF00774B72 /* ProfileViewController.swift */,
 				D37F1653238EF8A2001CB050 /* NewTaskViewController.swift */,
+				D37F165F2397DDF2001CB050 /* TaskTableViewCell.swift */,
 			);
 			path = volunteer_application;
 			sourceTree = "<group>";
@@ -178,6 +181,7 @@
 				D35BF8C62353945500774B72 /* ActualTasksViewController.swift in Sources */,
 				D35BF8D82358672200774B72 /* EventsViewController.swift in Sources */,
 				D37F16562396DC91001CB050 /* Hall.swift in Sources */,
+				D37F16602397DDF2001CB050 /* TaskTableViewCell.swift in Sources */,
 				D35BF8C22353945500774B72 /* AppDelegate.swift in Sources */,
 				D37F1652238D94E3001CB050 /* Task.swift in Sources */,
 				D35BF8C42353945500774B72 /* SceneDelegate.swift in Sources */,
