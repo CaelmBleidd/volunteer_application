@@ -7,73 +7,98 @@
 //
 
 import UIKit
+import os.log
 
-class ActualTasksViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ActualTasksViewController: UITableViewController {
 
     //MARK: Properties
     var tasks = [Task]()
 
-    var tableView: UITableView {
-        return view as! UITableView
-    }
-
     //MARK: Actions
     @IBAction func unwindToTasksList(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.source as? NewTaskViewController, let task = sourceViewController.task {
-            let newIndexPath = IndexPath(row: tasks.count, section: 0)
-            tasks.append(task)
-            tableView.insertRows(at: [newIndexPath], with: .automatic)
+            if let selectedIndexPath = tableView.indexPathForSelectedRow {
+                tasks[selectedIndexPath.row] = task
+                tableView.reloadRows(at: [selectedIndexPath], with: .none)
+            } else {
+                let newIndexPath = IndexPath(row: tasks.count, section: 0)
+                tasks.append(task)
+                tableView.insertRows(at: [newIndexPath], with: .automatic)
+            }
+
         }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadSampleTask()
 
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.register(TaskTableViewCell.self, forCellReuseIdentifier: "TaskTableViewCell")
+        loadSampleTask()
     }
 
-    func numberOfSections(in tableView: UITableView) -> Int {
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tasks.count
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: UITableViewCell
-        cell = tableView.dequeueReusableCell(withIdentifier: "TaskTableViewCell", for: indexPath)
-        cell.textLabel?.text = "\(tasks[indexPath.row].title) \(indexPath.row + 1)"
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cellIdentifier = "TaskTableViewCell"
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? TaskTableViewCell else {
+            fatalError("The dequeued cell is not an instance of TaskTableViewCell.")
+        }
+        let task = tasks[indexPath.row]
+        cell.taskTitle.text = task.title
         return cell
     }
 
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        if let cached = layoutCache[indexPath] {
-            return cached
-        } else {
-            return 44
-        }
-    }
 
-    var layoutCache: [IndexPath: CGFloat] = [:]
-
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        layoutCache[indexPath] = 55
-        return 55
-    }
-
-
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        guard editingStyle == .delete else {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        switch editingStyle {
+        case .delete:
+            tasks.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .bottom)
+        case .insert:
+            return
+        default:
             return
         }
-        tasks.remove(at: indexPath.row)
-        tableView.deleteRows(at: [indexPath], with: .bottom)
     }
 
+    
+    //MARK: Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        switch segue.identifier ?? "" {
+        case "AddItem":
+            os_log("Adding a new task", log: OSLog.default, type: .debug)
+        case "ShowDetails":
+            guard let taskDetailViewController = segue.destination as? NewTaskViewController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            
+            guard let selectedTaskCell = sender as? TaskTableViewCell else {
+                fatalError("Unexpected sender: \(String(describing: sender))")
+            }
+            
+            guard let indexPath = tableView.indexPath(for: selectedTaskCell) else {
+                fatalError("The selected cell is not being displayed by the table")
+            }
+            
+            let selectedTask = tasks[indexPath.row]
+            taskDetailViewController.task = selectedTask
+            
+        default:
+            fatalError("Unexpected Segue Identifier; \(String(describing: segue.identifier))")
+        }
+    }
     
     //MARK: Private Methods
     private func loadSampleTask() {

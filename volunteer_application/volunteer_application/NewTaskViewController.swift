@@ -26,14 +26,22 @@ class NewTaskViewController: UIViewController, UITextFieldDelegate {
         // Handle the text field’s user input through delegate callbacks.
         titleTextField.delegate = self
         
+        if let task = task {
+            navigationItem.title = task.title
+            titleTextField.text = task.title
+        }
+        
         // Enable the Save button only if the text field has a valid Meal name.
         updateSaveButtonState()
     }
     
     //MARK: UITextFieldDelegate
+    
     func textFieldDidBeginEditing(_ textField: UITextField) {
         saveButton.isEnabled = false
     }
+    
+    
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         updateSaveButtonState()
@@ -52,6 +60,16 @@ class NewTaskViewController: UIViewController, UITextFieldDelegate {
     // MARK: - Navigation
      
     @IBAction func cancel(_ sender: UIBarButtonItem) {
+        let isPresentingInAddTaskMode = presentingViewController is UINavigationController
+        
+        if isPresentingInAddTaskMode {
+            dismiss(animated: true, completion: nil)
+        } else if let owningNavigationController = navigationController {
+            owningNavigationController.popViewController(animated: true)
+        } else {
+            fatalError("The TaskViewController is not inside a navigation controller.")
+        }
+        
         dismiss(animated: true, completion: nil)
     }
     
