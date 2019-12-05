@@ -27,7 +27,7 @@ class NewTaskViewController: UIViewController, UITextFieldDelegate {
         titleTextField.delegate = self
         
         if let task = task {
-            navigationItem.title = task.title
+            navigationItem.title = "Change task"
             titleTextField.text = task.title
         }
         

@@ -64,7 +64,7 @@ class ActualTasksViewController: UITableViewController {
         })
         
         
-        let configuration = UISwipeActionsConfiguration(actions: [processingAction, deleteAction])
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction, processingAction])
         return configuration
     }
     

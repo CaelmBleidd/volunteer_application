@@ -23,21 +23,22 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iep-S9-MbN">
-                                            <rect key="frame" x="20" y="11" width="302" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iep-S9-MbN">
+                                            <rect key="frame" x="20" y="11" width="374" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DXY-lc-5DT">
-                                            <rect key="frame" x="359" y="9" width="25" height="24"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        </button>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Iep-S9-MbN" firstAttribute="trailing" secondItem="vCb-ZY-C9m" secondAttribute="trailingMargin" id="A0b-rg-qU7"/>
+                                        <constraint firstItem="Iep-S9-MbN" firstAttribute="trailing" secondItem="vCb-ZY-C9m" secondAttribute="trailingMargin" id="Dxb-if-wjY"/>
+                                        <constraint firstItem="Iep-S9-MbN" firstAttribute="top" secondItem="vCb-ZY-C9m" secondAttribute="topMargin" id="tJh-tN-OiZ"/>
+                                        <constraint firstItem="Iep-S9-MbN" firstAttribute="leading" secondItem="vCb-ZY-C9m" secondAttribute="leadingMargin" id="xMF-iy-PBS"/>
+                                        <constraint firstItem="Iep-S9-MbN" firstAttribute="leading" secondItem="vCb-ZY-C9m" secondAttribute="leadingMargin" id="yjU-9f-ZRW"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="infoButton" destination="DXY-lc-5DT" id="OCb-Us-qFY"/>
                                     <outlet property="taskTitle" destination="Iep-S9-MbN" id="9VD-hI-ddf"/>
                                     <segue destination="NUq-5e-WHt" kind="show" identifier="ShowDetails" id="Gjv-kY-8xk"/>
                                 </connections>
@@ -46,8 +47,8 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="Fho-T6-bMU">
                         <nil key="title"/>
-                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="FAu-fK-vy0">
-                            <rect key="frame" x="0.0" y="0.0" width="0.0" height="33"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="FAu-fK-vy0">
+                            <rect key="frame" x="74" y="5.5" width="266" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title=" New"/>
@@ -71,11 +72,11 @@
             <objects>
                 <viewController id="NUq-5e-WHt" customClass="NewTaskViewController" customModule="volunteer_application" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="doN-RZ-2id">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="OK4-vS-Tiz">
-                                <rect key="frame" x="0.0" y="76" width="414" height="138"/>
+                                <rect key="frame" x="0.0" y="108" width="414" height="138"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tgS-XF-bzR">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="34"/>
@@ -153,6 +154,7 @@
         <!--Events-->
         <scene sceneID="JcN-Gd-KGd">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QOE-fi-An6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="Mf1-g3-SQF" customClass="EventsViewController" customModule="volunteer_application" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="len-fc-vmk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -162,7 +164,6 @@
                     </view>
                     <navigationItem key="navigationItem" title="Events" id="9en-gb-cVJ"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QOE-fi-An6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1657.9710144927537" y="1108.9285714285713"/>
         </scene>
@@ -173,6 +174,12 @@
                     <view key="view" contentMode="scaleToFill" id="ciY-yl-zlw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CIn-Li-iuG">
+                                <rect key="frame" x="59" y="140" width="297" height="297"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="r3O-w0-mqH"/>
                     </view>
@@ -243,6 +250,7 @@
         <!--Events-->
         <scene sceneID="4as-af-aHC">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UEf-kG-0Do" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lGn-MM-Iev" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Events" id="gE5-Ha-c3f"/>
                     <toolbarItems/>
@@ -255,7 +263,6 @@
                         <segue destination="Mf1-g3-SQF" kind="relationship" relationship="rootViewController" id="Cnf-mp-WKC"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="UEf-kG-0Do" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="747.82608695652175" y="1108.9285714285713"/>
         </scene>
@@ -302,6 +309,6 @@
         <image name="second" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ohh-vO-mU0"/>
+        <segue reference="Gjv-kY-8xk"/>
     </inferredMetricsTieBreakers>
 </document>
