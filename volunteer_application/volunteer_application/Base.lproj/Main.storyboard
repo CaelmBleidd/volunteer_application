@@ -40,7 +40,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="taskTitle" destination="Iep-S9-MbN" id="9VD-hI-ddf"/>
-                                    <segue destination="NUq-5e-WHt" kind="show" identifier="ShowDetails" id="Gjv-kY-8xk"/>
+                                    <segue destination="NUq-5e-WHt" kind="showDetail" identifier="ShowDetails" id="Gjv-kY-8xk"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -72,11 +72,11 @@
             <objects>
                 <viewController id="NUq-5e-WHt" customClass="NewTaskViewController" customModule="volunteer_application" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="doN-RZ-2id">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="OK4-vS-Tiz">
-                                <rect key="frame" x="0.0" y="108" width="414" height="138"/>
+                                <rect key="frame" x="0.0" y="20" width="414" height="138"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tgS-XF-bzR">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="34"/>
