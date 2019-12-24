@@ -110,7 +110,9 @@ class ActualTasksViewController: UITableViewController {
             }
             
             let selectedTask = tasks[indexPath.row]
+            
             taskDetailViewController.task = selectedTask
+
             
         default:
             fatalError("Unexpected Segue Identifier; \(String(describing: segue.identifier))")

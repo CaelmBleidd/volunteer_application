@@ -27,8 +27,11 @@ class NewTaskViewController: UIViewController, UITextFieldDelegate {
         titleTextField.delegate = self
         
         if let task = task {
-            navigationItem.title = "Change task"
+            navigationItem.title = "See task"
             titleTextField.text = task.title
+            
+            titleTextField.isUserInteractionEnabled = false
+            bodyTextField.isUserInteractionEnabled = false
         }
         
         // Enable the Save button only if the text field has a valid Meal name.

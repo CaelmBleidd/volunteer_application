@@ -21,15 +21,17 @@ class Person: Hashable, Equatable {
 
     
     
-    init(_ first_name: String, _ last_name: String, _ group: String?, _ email: String, _ social: String?, _ phone_number: String?) {
+    init(_ id: Int64, _ first_name: String, _ last_name: String, _ group: String?, _ email: String, _ social: String?, _ phone_number: String?) {
         self.first_name = first_name
         self.last_name = last_name
         self.group = group
         self.email = email
         self.social = social
         self.phone_number = phone_number
+        self.id = id
     }
     
+    var id: Int64
     var first_name: String
     var last_name: String
     var group: String?
