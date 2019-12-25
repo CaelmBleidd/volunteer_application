@@ -17,6 +17,7 @@ class ProfileViewController: UIViewController {
     
     @IBAction func logoutAction(_ sender: Any) {
         UserDefaults.standard.set(false, forKey: "isUserAuthentificated")
+        UserDefaults.standard.removeObject(forKey: "currentUserId")
         let vc = UIStoryboard(name: "Main", bundle:nil)
             .instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
         UIApplication.shared.windows.first?.rootViewController = vc

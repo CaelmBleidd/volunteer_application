@@ -1,0 +1,188 @@
+//
+//  ServerApi.swift
+//  volunteer_application
+//
+//  Created by Alexey Menshutin on 24.12.2019.
+//  Copyright © 2019 Alexey Menshutin. All rights reserved.
+//
+
+import UIKit
+
+class ServerApi {
+    
+    private static let url = "https://itmo-volunteer-application.herokuapp.com/api"
+  
+    static func createRequest(endPointUrl: String, httpMethod: String, httpBody: Data?) -> URLRequest {
+        guard let url = URL(string: self.url + endPointUrl) else {
+            fatalError("Can't create non nil url")
+        }
+
+        var request = URLRequest(url: url)
+        request.httpMethod = httpMethod
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = httpBody
+
+        return request
+    }
+    
+    static func createSession() -> URLSession {
+        let sessionConfiguration: URLSessionConfiguration
+
+        sessionConfiguration = URLSessionConfiguration.default
+
+        let session = URLSession(configuration: sessionConfiguration)
+
+        return session
+        
+    }
+    
+    static func auth(userCredentials: UserCredentials, dGroup: DispatchGroup, completion: @escaping (Person) -> Void) {
+        guard let jsonBody = try? JSONEncoder().encode(userCredentials) else {
+            //error
+            return
+        }
+        let request = createRequest(endPointUrl: "/v1/user/auth", httpMethod: "POST", httpBody: jsonBody)
+        let task = createSession().dataTask(with: request) { (data, response, error) in
+            guard let data = data, error == nil else {
+                //error
+                return
+            }
+            DispatchQueue.main.async {
+                guard let personFromServer = try? JSONDecoder().decode(Person.self, from: data) else {
+                    //error
+                    return
+                }
+                
+                completion(personFromServer)
+                dGroup.leave()
+            }
+        }
+        
+        task.resume()
+    }
+    
+    static func addPassword(userCredentials: UserCredentials, dGroup: DispatchGroup) {
+        guard let jsonBody = try? JSONEncoder().encode(userCredentials) else {
+            //error
+            return
+        }
+        let request = createRequest(endPointUrl: "/v1/user/register", httpMethod: "PUT", httpBody: jsonBody)
+        let task = createSession().dataTask(with: request) { (data, response, error) in
+            guard let data = data, error == nil else {
+                //error
+                return
+            }
+            DispatchQueue.main.async {
+                dGroup.leave()
+            }
+        }
+        
+        task.resume()
+    }
+    
+    static func register(person: Person, dGroup: DispatchGroup, completion: @escaping (Person) -> Void) {
+        guard var jsonBody = try? JSONEncoder().encode(person) else {
+            //error
+            return
+        }
+        
+        let request = createRequest(endPointUrl: "/v1/user/", httpMethod: "POST", httpBody: jsonBody)
+        
+        let task = createSession().dataTask(with: request) { (data, response, error) in
+            guard let data = data, error == nil else {
+                //error
+                return
+            }
+            
+            DispatchQueue.main.async {
+                guard let personFromServer = try? JSONDecoder().decode(Person.self, from: data) else {
+                    //error
+                    return
+                }
+                
+                completion(personFromServer)
+                dGroup.leave()
+            }
+        }
+        
+        task.resume()
+    }
+    
+    
+//    init() {
+//        let sessionConfiguration = URLSessionConfiguration.default
+//        session = URLSession(configuration: sessionConfiguration, delegate: nil, delegateQueue: nil)
+//    }
+//
+//    func login(_ login: String, _ password: String) -> Person? {
+//        let requestUrl = URL(string: "https://itmo-volunteer-application.herokuapp.com/api/v1/user/auth")
+//        var request = URLRequest(url: requestUrl!)
+//        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+//        request.httpMethod = "GET"
+//        let data = "login=\(login)&password=\(password)".data(using: String.Encoding.utf8)
+//        request.httpBody = data
+//
+//        let task = self.session.dataTask(with: request) { (data, response, error) in
+//            if let error = error {
+//                print("error: \(error)")
+//            } else {
+//                if let response = response as? HTTPURLResponse {
+//                    print("statusCode: \(response.statusCode)")
+//                }
+//                if let data = data, let dataString = String(data: data, encoding: .utf8) {
+//                    print ("data: \(dataString)")
+//                }
+//            }
+//        }
+//        task.resume()
+//        return nil
+//    }
+//
+//    func register(_ person: Person, _ password: String, completion: @escaping (Person) -> Void) {
+//        var currentUser: Person?
+//        let url = URL(string: "https://itmo-volunteer-application.herokuapp.com/api/v1/user")!
+//        var request = URLRequest(url: url)
+//        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+//        request.httpMethod = "POST"
+//        let parameters: [String: Any?] = [
+//            "email": person.email,
+//            "id": 0,
+//            "login": person.login,
+//            "name": person.firstName,
+//            "patronymic": person.patronymic,
+//            "phone": person.phoneNumber,
+//            "photoLink": person.photoLink,
+//            "rating": 1500,
+//            "surname": person.lastName,
+//            "verified": false,
+//            "group": person.group
+//        ]
+//        request.httpBody = parameters.percentEncoded()
+//
+//        let task = self.session.dataTask(with: request, completionHandler: { (data, response, error) in guard let data = data else
+//            { return }
+//            do {
+//                let user = try JSONDecoder().decode(Person.self, from: data)
+//                completion(user)
+//            } catch let error { /* errors */ }
+//
+//        })
+//        task.resume()
+//    }
+
+    
+//    let url = URL(string: "https://httpbin.org/get")!
+//    let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+//        if let error = error {
+//            print("error: \(error)")
+//        } else {
+//            if let response = response as? HTTPURLResponse {
+//                print("statusCode: \(response.statusCode)")
+//            }
+//            if let data = data, let dataString = String(data: data, encoding: .utf8) {
+//                print("data: \(dataString)")
+//            }
+//        }
+//    }
+//    task.resume()
+}

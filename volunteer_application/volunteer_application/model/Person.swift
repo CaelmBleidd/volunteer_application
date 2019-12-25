@@ -8,37 +8,56 @@
 
 import Foundation
 
-class Person: Hashable, Equatable {
+class Person: Hashable, Equatable, Codable {
     static func == (lhs: Person, rhs: Person) -> Bool {
-        return lhs.first_name == rhs.first_name && lhs.last_name == rhs.last_name && lhs.email == rhs.email
+        return lhs.name == rhs.name && lhs.surname == rhs.surname && lhs.email == rhs.email
     }
     // MARK: Hashable
     func hash(into hasher: inout Hasher) {
-        hasher.combine(first_name)
-        hasher.combine(last_name)
+        hasher.combine(name)
+        hasher.combine(surname)
         hasher.combine(email)
     }
 
     
     
-    init(_ id: Int64, _ first_name: String, _ last_name: String, _ group: String?, _ email: String, _ social: String?, _ phone_number: String?) {
-        self.first_name = first_name
-        self.last_name = last_name
+    init(_ id: Int64,
+         _ name: String,
+         _ surname: String,
+         _ patronymic: String?,
+         _ group: String?,
+         _ email: String,
+         _ phone_number: String?,
+         _ photo_link: String?,
+         _ rating: Int64,
+         _ verified: Bool,
+         _ login: String) {
+        self.id = id
+        self.name = name
+        self.surname = surname
+        self.patronymic = patronymic
         self.group = group
         self.email = email
-        self.social = social
-        self.phone_number = phone_number
-        self.id = id
+        self.phone = phone_number
+        self.photo_link = photo_link
+        self.rating = rating
+        self.verified = verified
+        self.login = login
     }
     
     var id: Int64
-    var first_name: String
-    var last_name: String
+    var name: String
+    var surname: String
+    var patronymic: String?
     var group: String?
     var email: String
-    var social: String?
-    var phone_number: String?
+    var phone: String?
+    var photo_link: String?
+    var rating: Int64
+    var verified: Bool
+    var login: String
     
+
     enum Role {
         case reserve, hall_manager, deputy_hall_manager, hall_volunteer, press, registration, entertainment_volunteer, tc_assistant, entertainment_manager, registration_manager, press_manager, director_of_operations, technical_committee, volunteer_manager, z_cancelled, system_administrator, contest_director, pcms_manager, balloon_manager, balloon_volunteer
     }
