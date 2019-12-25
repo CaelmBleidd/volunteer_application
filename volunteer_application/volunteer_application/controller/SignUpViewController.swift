@@ -38,6 +38,9 @@ class SignUpViewController: UIViewController {
         [nameField, lastNameField, groupField, emailField, phoneNumberField, loginField, passwordField]
             .forEach({ $0.addTarget(self, action: #selector(editingChanged), for: .editingChanged) })
         // Do any additional setup after loading the view.
+        
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
+        view.addGestureRecognizer(tap)
     }
     
     @objc func editingChanged(_ textField: UITextField) {
@@ -84,23 +87,58 @@ class SignUpViewController: UIViewController {
         group.enter()
         group.enter()
         
-        ServerApi.register(person: curPerson, dGroup: group) { (person) -> Void in
-            ServerApi.addPassword(userCredentials: UserCredentials(login: curPerson.login, password: self.passwordField.text!), dGroup: group)
-            personFromServer = person
+        let password = self.passwordField.text!
+        
+        self.view.showBlurLoader()
+        DispatchQueue.main.async {
+            ServerApi.register(person: curPerson, dGroup: group) { (person) -> Void in
+                ServerApi.addPassword(userCredentials: UserCredentials(login: curPerson.login, password: password), dGroup: group)
+                personFromServer = person
+            }
         }
         
         
     
         group.notify(queue: .main) {
+            self.view.removeBluerLoader()
             if (personFromServer != nil) {
                 UserDefaults.standard.set(personFromServer?.id ,forKey: "currentUserId")
                 UserDefaults.standard.set(true, forKey: "isUserAuthentificated")
-
+                
                 let vc = UIStoryboard(name: "Main", bundle:nil)
                     .instantiateViewController(withIdentifier: "InitialViewController") as! UITabBarController
                 UIApplication.shared.windows.first?.rootViewController = vc
                 UIApplication.shared.windows.first?.makeKeyAndVisible()
 
+
+                /*
+                 let alert = UIAlertController(title: "New Name",
+                                               message: "Add a new name",
+                                               preferredStyle: .alert)
+                 
+                 let saveAction = UIAlertAction(title: "Save",
+                                                style: .default) {
+                   [unowned self] action in
+                                                 
+                   guard let textField = alert.textFields?.first,
+                     let nameToSave = textField.text else {
+                       return
+                   }
+                   
+                   self.names.append(nameToSave)
+                   self.tableView.reloadData()
+                 }
+                 
+                 let cancelAction = UIAlertAction(title: "Cancel",
+                                                  style: .cancel)
+                 
+                 alert.addTextField()
+                 
+                 alert.addAction(saveAction)
+                 alert.addAction(cancelAction)
+                 
+                 present(alert, animated: true)
+                 */
             } else {
                 //show alert
             }

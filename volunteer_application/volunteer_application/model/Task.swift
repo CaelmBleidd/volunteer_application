@@ -16,16 +16,14 @@ class Task {
         self.event = nil
     }
     
-    init(_ title: String, _ body: String?, _ target_halls: Array<Hall>, _ event: Event) {
+    init(_ title: String, _ body: String?, _ event: Event) {
         self.title = title
         self.body = body
-        self.target_halls = target_halls
         self.event = event
     }
     
     var title: String
     var body: String? = nil
-    var target_halls = Array<Hall>()
     var event: Event?
     
     //todo images

@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import CoreData
 
 class ProfileViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -19,7 +20,7 @@ class ProfileViewController: UIViewController {
         UserDefaults.standard.set(false, forKey: "isUserAuthentificated")
         UserDefaults.standard.removeObject(forKey: "currentUserId")
         let vc = UIStoryboard(name: "Main", bundle:nil)
-            .instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+            .instantiateViewController(withIdentifier: "LoginViewController") as! UINavigationController
         UIApplication.shared.windows.first?.rootViewController = vc
         UIApplication.shared.windows.first?.makeKeyAndVisible()
     }

@@ -18,11 +18,9 @@
 		D372BBE223B253CA00D7C70A /* BlurLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D372BBE123B253CA00D7C70A /* BlurLoader.swift */; };
 		D37F1652238D94E3001CB050 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37F1651238D94E3001CB050 /* Task.swift */; };
 		D37F1654238EF8A2001CB050 /* NewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37F1653238EF8A2001CB050 /* NewTaskViewController.swift */; };
-		D37F16562396DC91001CB050 /* Hall.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37F16552396DC91001CB050 /* Hall.swift */; };
 		D37F16582396DCA9001CB050 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37F16572396DCA9001CB050 /* Person.swift */; };
 		D37F165A2396DCC7001CB050 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37F16592396DCC7001CB050 /* Event.swift */; };
 		D37F16602397DDF2001CB050 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37F165F2397DDF2001CB050 /* TaskTableViewCell.swift */; };
-		D3BAB81423B28FAC00557045 /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BAB81323B28FAC00557045 /* Extentions.swift */; };
 		D3BAB81623B374EF00557045 /* ServerApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BAB81523B374EF00557045 /* ServerApi.swift */; };
 		D3BAB81823B3A0AF00557045 /* UserCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BAB81723B3A0AF00557045 /* UserCredentials.swift */; };
 		D3DAF7FC23B14A7D00E541FC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DAF7FB23B14A7D00E541FC /* LoginViewController.swift */; };
@@ -43,11 +41,9 @@
 		D372BBE123B253CA00D7C70A /* BlurLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurLoader.swift; sourceTree = "<group>"; };
 		D37F1651238D94E3001CB050 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		D37F1653238EF8A2001CB050 /* NewTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskViewController.swift; sourceTree = "<group>"; };
-		D37F16552396DC91001CB050 /* Hall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hall.swift; sourceTree = "<group>"; };
 		D37F16572396DCA9001CB050 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		D37F16592396DCC7001CB050 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		D37F165F2397DDF2001CB050 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
-		D3BAB81323B28FAC00557045 /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
 		D3BAB81523B374EF00557045 /* ServerApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerApi.swift; sourceTree = "<group>"; };
 		D3BAB81723B3A0AF00557045 /* UserCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCredentials.swift; sourceTree = "<group>"; };
 		D3DAF7FB23B14A7D00E541FC /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -84,23 +80,16 @@
 		D35BF8C02353945500774B72 /* volunteer_application */ = {
 			isa = PBXGroup;
 			children = (
+				D3BAB82C23B418AD00557045 /* util */,
+				D3BAB82B23B418A200557045 /* view */,
+				D3BAB82A23B4189000557045 /* controller */,
 				D37F1650238D948D001CB050 /* model */,
 				D35BF8C12353945500774B72 /* AppDelegate.swift */,
-				D3DAF7FD23B14AC600E541FC /* SignUpViewController.swift */,
 				D35BF8C32353945500774B72 /* SceneDelegate.swift */,
-				D35BF8C52353945500774B72 /* ActualTasksViewController.swift */,
 				D35BF8C92353945500774B72 /* Main.storyboard */,
 				D35BF8CC2353945700774B72 /* Assets.xcassets */,
 				D35BF8CE2353945700774B72 /* LaunchScreen.storyboard */,
 				D35BF8D12353945800774B72 /* Info.plist */,
-				D35BF8D72358672200774B72 /* EventsViewController.swift */,
-				D35BF8D92358C7CF00774B72 /* ProfileViewController.swift */,
-				D37F1653238EF8A2001CB050 /* NewTaskViewController.swift */,
-				D37F165F2397DDF2001CB050 /* TaskTableViewCell.swift */,
-				D3DAF7FB23B14A7D00E541FC /* LoginViewController.swift */,
-				D372BBE123B253CA00D7C70A /* BlurLoader.swift */,
-				D3BAB81323B28FAC00557045 /* Extentions.swift */,
-				D3BAB81523B374EF00557045 /* ServerApi.swift */,
 			);
 			path = volunteer_application;
 			sourceTree = "<group>";
@@ -109,12 +98,41 @@
 			isa = PBXGroup;
 			children = (
 				D37F1651238D94E3001CB050 /* Task.swift */,
-				D37F16552396DC91001CB050 /* Hall.swift */,
 				D37F16572396DCA9001CB050 /* Person.swift */,
 				D37F16592396DCC7001CB050 /* Event.swift */,
 				D3BAB81723B3A0AF00557045 /* UserCredentials.swift */,
 			);
 			path = model;
+			sourceTree = "<group>";
+		};
+		D3BAB82A23B4189000557045 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				D3DAF7FD23B14AC600E541FC /* SignUpViewController.swift */,
+				D35BF8C52353945500774B72 /* ActualTasksViewController.swift */,
+				D35BF8D72358672200774B72 /* EventsViewController.swift */,
+				D35BF8D92358C7CF00774B72 /* ProfileViewController.swift */,
+				D37F1653238EF8A2001CB050 /* NewTaskViewController.swift */,
+				D3DAF7FB23B14A7D00E541FC /* LoginViewController.swift */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		D3BAB82B23B418A200557045 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				D37F165F2397DDF2001CB050 /* TaskTableViewCell.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		D3BAB82C23B418AD00557045 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				D372BBE123B253CA00D7C70A /* BlurLoader.swift */,
+				D3BAB81523B374EF00557045 /* ServerApi.swift */,
+			);
+			path = util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,14 +213,12 @@
 				D37F1654238EF8A2001CB050 /* NewTaskViewController.swift in Sources */,
 				D35BF8C62353945500774B72 /* ActualTasksViewController.swift in Sources */,
 				D35BF8D82358672200774B72 /* EventsViewController.swift in Sources */,
-				D37F16562396DC91001CB050 /* Hall.swift in Sources */,
 				D372BBE223B253CA00D7C70A /* BlurLoader.swift in Sources */,
 				D3DAF7FE23B14AC600E541FC /* SignUpViewController.swift in Sources */,
 				D37F16602397DDF2001CB050 /* TaskTableViewCell.swift in Sources */,
 				D35BF8C22353945500774B72 /* AppDelegate.swift in Sources */,
 				D3BAB81623B374EF00557045 /* ServerApi.swift in Sources */,
 				D37F1652238D94E3001CB050 /* Task.swift in Sources */,
-				D3BAB81423B28FAC00557045 /* Extentions.swift in Sources */,
 				D3DAF7FC23B14A7D00E541FC /* LoginViewController.swift in Sources */,
 				D35BF8C42353945500774B72 /* SceneDelegate.swift in Sources */,
 			);

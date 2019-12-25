@@ -47,15 +47,19 @@ class ServerApi {
                 //error
                 return
             }
-            DispatchQueue.main.async {
-                guard let personFromServer = try? JSONDecoder().decode(Person.self, from: data) else {
-                    //error
-                    return
-                }
-                
-                completion(personFromServer)
-                dGroup.leave()
+            
+            if let response = response as? HTTPURLResponse {
+                print("statusCode: \(response.statusCode)")
             }
+            
+            guard let personFromServer = try? JSONDecoder().decode(Person.self, from: data) else {
+                dGroup.leave()
+                return
+            }
+                
+            completion(personFromServer)
+            dGroup.leave()
+
         }
         
         task.resume()
@@ -67,21 +71,15 @@ class ServerApi {
             return
         }
         let request = createRequest(endPointUrl: "/v1/user/register", httpMethod: "PUT", httpBody: jsonBody)
-        let task = createSession().dataTask(with: request) { (data, response, error) in
-            guard let data = data, error == nil else {
-                //error
-                return
-            }
-            DispatchQueue.main.async {
-                dGroup.leave()
-            }
+        let task = createSession().dataTask(with: request) { (_, _, _) in
+            dGroup.leave()
         }
         
         task.resume()
     }
     
     static func register(person: Person, dGroup: DispatchGroup, completion: @escaping (Person) -> Void) {
-        guard var jsonBody = try? JSONEncoder().encode(person) else {
+        guard let jsonBody = try? JSONEncoder().encode(person) else {
             //error
             return
         }
@@ -94,15 +92,14 @@ class ServerApi {
                 return
             }
             
-            DispatchQueue.main.async {
-                guard let personFromServer = try? JSONDecoder().decode(Person.self, from: data) else {
-                    //error
-                    return
-                }
-                
-                completion(personFromServer)
+            guard let personFromServer = try? JSONDecoder().decode(Person.self, from: data) else {
                 dGroup.leave()
+                return
             }
+            
+            completion(personFromServer)
+            dGroup.leave()
+            
         }
         
         task.resume()

@@ -23,6 +23,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         guard let window = self.window else { return }
         
+        if #available(iOS 13.0, *) {
+            window.overrideUserInterfaceStyle = .light
+        }
 
         
         var myViewController: UIViewController
@@ -31,7 +34,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 .instantiateViewController(withIdentifier: "InitialViewController") as! UITabBarController
         } else {
             myViewController = UIStoryboard(name: "Main", bundle: nil)
-                .instantiateViewController(identifier: "LoginViewController") as! LoginViewController
+                .instantiateViewController(identifier: "LoginViewController") as! UINavigationController
         }
         
         

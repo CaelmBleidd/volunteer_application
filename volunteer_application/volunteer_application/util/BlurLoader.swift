@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+
 extension UIView {
     func showBlurLoader() {
         let blurLoader = BlurLoader(frame: frame)
@@ -49,4 +51,6 @@ class BlurLoader: UIView {
         activityIndicator.center = blurEffectView.contentView.center
         activityIndicator.startAnimating()
     }
+    
+    
 }
