@@ -15,9 +15,10 @@ class NewTaskViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
+    @IBOutlet weak var processButton: UIButton!
     @IBOutlet weak var titleTextField: UITextField!
     
-    @IBOutlet weak var bodyTextField: UITextField!
+    @IBOutlet weak var bodyTextView: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,18 +26,24 @@ class NewTaskViewController: UIViewController, UITextFieldDelegate {
         // Do any additional setup after loading the view.
         // Handle the text field’s user input through delegate callbacks.
         titleTextField.delegate = self
+
         
         if let task = task {
             navigationItem.title = "See task"
             titleTextField.text = task.title
             
             titleTextField.isUserInteractionEnabled = false
-            bodyTextField.isUserInteractionEnabled = false
+            bodyTextView.isUserInteractionEnabled = false
+            processButton.isHidden = false
+            processButton.isEnabled = true
+        } else {
+            processButton.isEnabled = false
+            processButton.isHidden = true
         }
         
-        // Enable the Save button only if the text field has a valid Meal name.
         updateSaveButtonState()
     }
+    
     
     //MARK: UITextFieldDelegate
     
@@ -51,6 +58,9 @@ class NewTaskViewController: UIViewController, UITextFieldDelegate {
         navigationItem.title = textField.text
     }
     
+    @IBAction func processAction(_ sender: Any) {
+        
+    }
     
     //MARK: Private Methods
     private func updateSaveButtonState() {
@@ -86,7 +96,7 @@ class NewTaskViewController: UIViewController, UITextFieldDelegate {
         }
         
         let title = titleTextField.text ?? ""
-        let body = bodyTextField.text
+        let body = bodyTextView.text
         
         task = Task(title)
     }

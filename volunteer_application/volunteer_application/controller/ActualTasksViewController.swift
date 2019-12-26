@@ -67,14 +67,9 @@ class ActualTasksViewController: UITableViewController {
         let configuration = UISwipeActionsConfiguration(actions: [deleteAction, processingAction])
         return configuration
     }
-    
-    override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        //todo
-        return nil
-    }
 
     
-    //MARK: Actions
+//    MARK: Actions
     @IBAction func unwindToTasksList(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.source as? NewTaskViewController, let task = sourceViewController.task {
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
@@ -88,8 +83,8 @@ class ActualTasksViewController: UITableViewController {
 
         }
     }
-    
-    
+
+
     //MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)

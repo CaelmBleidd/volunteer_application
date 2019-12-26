@@ -9,16 +9,21 @@
 import Foundation
 
 class Event {
-    init(_ title: String, _ tasks: Array<Task>, _ members: Array<Person>, _ roles: Dictionary<Person, Person.Role>) {
+    init(id: Int64, title: String, description: String?, beginDate: Int64, endDate: Int64, location: String, starred: Bool) {
+        self.id = id
         self.title = title
-        self.tasks = tasks
-        self.members = members
-        self.roles = roles
+        self.description = description
+        self.beginDate = Date(milliseconds: beginDate)
+        self.endDate = Date(milliseconds: endDate)
+        self.location = location
+        self.starred = starred
     }
     
-    
+    var id: Int64
     var title: String
-    var tasks: Array<Task>
-    var members: Array<Person>
-    var roles: Dictionary<Person, Person.Role>
+    var description: String?
+    var beginDate: Date
+    var endDate: Date
+    var location: String
+    var starred: Bool
 }

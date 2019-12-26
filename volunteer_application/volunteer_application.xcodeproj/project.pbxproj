@@ -24,6 +24,11 @@
 		D37F16582396DCA9001CB050 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37F16572396DCA9001CB050 /* Person.swift */; };
 		D37F165A2396DCC7001CB050 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37F16592396DCC7001CB050 /* Event.swift */; };
 		D37F16602397DDF2001CB050 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37F165F2397DDF2001CB050 /* TaskTableViewCell.swift */; };
+		D39A517823B5373A007ADBD5 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39A517723B5373A007ADBD5 /* EventTableViewCell.swift */; };
+		D39A517A23B538A4007ADBD5 /* SingleEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39A517923B538A4007ADBD5 /* SingleEventViewController.swift */; };
+		D39A517F23B53BBA007ADBD5 /* EventData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39A517D23B53BBA007ADBD5 /* EventData+CoreDataClass.swift */; };
+		D39A518023B53BBA007ADBD5 /* EventData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39A517E23B53BBA007ADBD5 /* EventData+CoreDataProperties.swift */; };
+		D39A518223B5568C007ADBD5 /* DateExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39A518123B5568C007ADBD5 /* DateExtentions.swift */; };
 		D3BAB81623B374EF00557045 /* ServerApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BAB81523B374EF00557045 /* ServerApi.swift */; };
 		D3BAB81823B3A0AF00557045 /* UserCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BAB81723B3A0AF00557045 /* UserCredentials.swift */; };
 		D3BAB83423B41A5A00557045 /* volunteer_application.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D3BAB83223B41A5A00557045 /* volunteer_application.xcdatamodeld */; };
@@ -51,6 +56,11 @@
 		D37F16572396DCA9001CB050 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		D37F16592396DCC7001CB050 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		D37F165F2397DDF2001CB050 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
+		D39A517723B5373A007ADBD5 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
+		D39A517923B538A4007ADBD5 /* SingleEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleEventViewController.swift; sourceTree = "<group>"; };
+		D39A517D23B53BBA007ADBD5 /* EventData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventData+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		D39A517E23B53BBA007ADBD5 /* EventData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventData+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		D39A518123B5568C007ADBD5 /* DateExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtentions.swift; sourceTree = "<group>"; };
 		D3BAB81523B374EF00557045 /* ServerApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerApi.swift; sourceTree = "<group>"; };
 		D3BAB81723B3A0AF00557045 /* UserCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCredentials.swift; sourceTree = "<group>"; };
 		D3BAB83323B41A5A00557045 /* volunteer_application.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = volunteer_application.xcdatamodel; sourceTree = "<group>"; };
@@ -123,6 +133,7 @@
 				D35BF8D92358C7CF00774B72 /* ProfileViewController.swift */,
 				D37F1653238EF8A2001CB050 /* NewTaskViewController.swift */,
 				D3DAF7FB23B14A7D00E541FC /* LoginViewController.swift */,
+				D39A517923B538A4007ADBD5 /* SingleEventViewController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -131,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				D37F165F2397DDF2001CB050 /* TaskTableViewCell.swift */,
+				D39A517723B5373A007ADBD5 /* EventTableViewCell.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -141,6 +153,7 @@
 				D372BBE123B253CA00D7C70A /* BlurLoader.swift */,
 				D3BAB81523B374EF00557045 /* ServerApi.swift */,
 				D362797D23B4407200AAF1EA /* ImagePicker.swift */,
+				D39A518123B5568C007ADBD5 /* DateExtentions.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -148,6 +161,8 @@
 		D3BAB83123B41A4100557045 /* coreData */ = {
 			isa = PBXGroup;
 			children = (
+				D39A517D23B53BBA007ADBD5 /* EventData+CoreDataClass.swift */,
+				D39A517E23B53BBA007ADBD5 /* EventData+CoreDataProperties.swift */,
 				D362797923B42F4400AAF1EA /* User+CoreDataClass.swift */,
 				D362797A23B42F4400AAF1EA /* User+CoreDataProperties.swift */,
 				D3BAB83223B41A5A00557045 /* volunteer_application.xcdatamodeld */,
@@ -227,15 +242,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				D37F16582396DCA9001CB050 /* Person.swift in Sources */,
+				D39A517A23B538A4007ADBD5 /* SingleEventViewController.swift in Sources */,
 				D37F165A2396DCC7001CB050 /* Event.swift in Sources */,
 				D35BF8DA2358C7CF00774B72 /* ProfileViewController.swift in Sources */,
 				D3BAB81823B3A0AF00557045 /* UserCredentials.swift in Sources */,
 				D37F1654238EF8A2001CB050 /* NewTaskViewController.swift in Sources */,
+				D39A518223B5568C007ADBD5 /* DateExtentions.swift in Sources */,
 				D3BAB83423B41A5A00557045 /* volunteer_application.xcdatamodeld in Sources */,
 				D35BF8C62353945500774B72 /* ActualTasksViewController.swift in Sources */,
 				D362797E23B4407200AAF1EA /* ImagePicker.swift in Sources */,
+				D39A517823B5373A007ADBD5 /* EventTableViewCell.swift in Sources */,
+				D39A518023B53BBA007ADBD5 /* EventData+CoreDataProperties.swift in Sources */,
 				D35BF8D82358672200774B72 /* EventsViewController.swift in Sources */,
 				D362797C23B42F4400AAF1EA /* User+CoreDataProperties.swift in Sources */,
+				D39A517F23B53BBA007ADBD5 /* EventData+CoreDataClass.swift in Sources */,
 				D362797B23B42F4400AAF1EA /* User+CoreDataClass.swift in Sources */,
 				D372BBE223B253CA00D7C70A /* BlurLoader.swift in Sources */,
 				D3DAF7FE23B14AC600E541FC /* SignUpViewController.swift in Sources */,

@@ -1,17 +1,20 @@
 //
-//  TaskTableViewCell.swift
+//  EventTableViewCell.swift
 //  volunteer_application
 //
-//  Created by Alexey Menshutin on 04.12.2019.
+//  Created by Alexey Menshutin on 26.12.2019.
 //  Copyright © 2019 Alexey Menshutin. All rights reserved.
 //
 
 import UIKit
 
-class TaskTableViewCell: UITableViewCell {
+class EventTableViewCell: UITableViewCell {
 
-    //MARK: Properties
-    @IBOutlet weak var taskTitle: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    
+    @IBOutlet weak var dateLabel: UILabel!
+    
+    @IBOutlet weak var locationLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
