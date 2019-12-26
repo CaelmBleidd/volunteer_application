@@ -15,6 +15,9 @@
 		D35BF8D02353945700774B72 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D35BF8CE2353945700774B72 /* LaunchScreen.storyboard */; };
 		D35BF8D82358672200774B72 /* EventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35BF8D72358672200774B72 /* EventsViewController.swift */; };
 		D35BF8DA2358C7CF00774B72 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D35BF8D92358C7CF00774B72 /* ProfileViewController.swift */; };
+		D362797B23B42F4400AAF1EA /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D362797923B42F4400AAF1EA /* User+CoreDataClass.swift */; };
+		D362797C23B42F4400AAF1EA /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D362797A23B42F4400AAF1EA /* User+CoreDataProperties.swift */; };
+		D362797E23B4407200AAF1EA /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D362797D23B4407200AAF1EA /* ImagePicker.swift */; };
 		D372BBE223B253CA00D7C70A /* BlurLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D372BBE123B253CA00D7C70A /* BlurLoader.swift */; };
 		D37F1652238D94E3001CB050 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37F1651238D94E3001CB050 /* Task.swift */; };
 		D37F1654238EF8A2001CB050 /* NewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37F1653238EF8A2001CB050 /* NewTaskViewController.swift */; };
@@ -23,6 +26,7 @@
 		D37F16602397DDF2001CB050 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37F165F2397DDF2001CB050 /* TaskTableViewCell.swift */; };
 		D3BAB81623B374EF00557045 /* ServerApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BAB81523B374EF00557045 /* ServerApi.swift */; };
 		D3BAB81823B3A0AF00557045 /* UserCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3BAB81723B3A0AF00557045 /* UserCredentials.swift */; };
+		D3BAB83423B41A5A00557045 /* volunteer_application.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D3BAB83223B41A5A00557045 /* volunteer_application.xcdatamodeld */; };
 		D3DAF7FC23B14A7D00E541FC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DAF7FB23B14A7D00E541FC /* LoginViewController.swift */; };
 		D3DAF7FE23B14AC600E541FC /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DAF7FD23B14AC600E541FC /* SignUpViewController.swift */; };
 /* End PBXBuildFile section */
@@ -38,6 +42,9 @@
 		D35BF8D12353945800774B72 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D35BF8D72358672200774B72 /* EventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewController.swift; sourceTree = "<group>"; };
 		D35BF8D92358C7CF00774B72 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		D362797923B42F4400AAF1EA /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		D362797A23B42F4400AAF1EA /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		D362797D23B4407200AAF1EA /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		D372BBE123B253CA00D7C70A /* BlurLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurLoader.swift; sourceTree = "<group>"; };
 		D37F1651238D94E3001CB050 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		D37F1653238EF8A2001CB050 /* NewTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskViewController.swift; sourceTree = "<group>"; };
@@ -46,6 +53,7 @@
 		D37F165F2397DDF2001CB050 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		D3BAB81523B374EF00557045 /* ServerApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerApi.swift; sourceTree = "<group>"; };
 		D3BAB81723B3A0AF00557045 /* UserCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCredentials.swift; sourceTree = "<group>"; };
+		D3BAB83323B41A5A00557045 /* volunteer_application.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = volunteer_application.xcdatamodel; sourceTree = "<group>"; };
 		D3DAF7FB23B14A7D00E541FC /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D3DAF7FD23B14AC600E541FC /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -80,6 +88,7 @@
 		D35BF8C02353945500774B72 /* volunteer_application */ = {
 			isa = PBXGroup;
 			children = (
+				D3BAB83123B41A4100557045 /* coreData */,
 				D3BAB82C23B418AD00557045 /* util */,
 				D3BAB82B23B418A200557045 /* view */,
 				D3BAB82A23B4189000557045 /* controller */,
@@ -131,8 +140,19 @@
 			children = (
 				D372BBE123B253CA00D7C70A /* BlurLoader.swift */,
 				D3BAB81523B374EF00557045 /* ServerApi.swift */,
+				D362797D23B4407200AAF1EA /* ImagePicker.swift */,
 			);
 			path = util;
+			sourceTree = "<group>";
+		};
+		D3BAB83123B41A4100557045 /* coreData */ = {
+			isa = PBXGroup;
+			children = (
+				D362797923B42F4400AAF1EA /* User+CoreDataClass.swift */,
+				D362797A23B42F4400AAF1EA /* User+CoreDataProperties.swift */,
+				D3BAB83223B41A5A00557045 /* volunteer_application.xcdatamodeld */,
+			);
+			path = coreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -211,8 +231,12 @@
 				D35BF8DA2358C7CF00774B72 /* ProfileViewController.swift in Sources */,
 				D3BAB81823B3A0AF00557045 /* UserCredentials.swift in Sources */,
 				D37F1654238EF8A2001CB050 /* NewTaskViewController.swift in Sources */,
+				D3BAB83423B41A5A00557045 /* volunteer_application.xcdatamodeld in Sources */,
 				D35BF8C62353945500774B72 /* ActualTasksViewController.swift in Sources */,
+				D362797E23B4407200AAF1EA /* ImagePicker.swift in Sources */,
 				D35BF8D82358672200774B72 /* EventsViewController.swift in Sources */,
+				D362797C23B42F4400AAF1EA /* User+CoreDataProperties.swift in Sources */,
+				D362797B23B42F4400AAF1EA /* User+CoreDataClass.swift in Sources */,
 				D372BBE223B253CA00D7C70A /* BlurLoader.swift in Sources */,
 				D3DAF7FE23B14AC600E541FC /* SignUpViewController.swift in Sources */,
 				D37F16602397DDF2001CB050 /* TaskTableViewCell.swift in Sources */,
@@ -420,6 +444,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		D3BAB83223B41A5A00557045 /* volunteer_application.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D3BAB83323B41A5A00557045 /* volunteer_application.xcdatamodel */,
+			);
+			currentVersion = D3BAB83323B41A5A00557045 /* volunteer_application.xcdatamodel */;
+			path = volunteer_application.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = D35BF8B62353945500774B72 /* Project object */;
 }

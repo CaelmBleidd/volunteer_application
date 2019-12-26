@@ -67,22 +67,24 @@ class LoginViewController: UIViewController {
                 UserDefaults.standard.set(currentPerson?.id ,forKey: "currentUserId")
                 UserDefaults.standard.set(true, forKey: "isUserAuthentificated")
                 
-//
-//                let person = NSEntityDescription.insertNewObject(forEntityName: "Person", into: moc)
-//                person.setValue(currentPerson?.name, forKey: "name")
-//                person.setValue(currentPerson?.surname, forKey: "surname")
-//                person.setValue(currentPerson?.patronymic, forKey: "patronymic")
-//                person.setValue(currentPerson?.group, forKey: "group")
-//                person.setValue(currentPerson?.id, forKey: "id")
-//                person.setValue(currentPerson?.email, forKey: "email")
-//                person.setValue(currentPerson?.phone, forKey: "phone")
-//                person.setValue(currentPerson?.photo_link, forKey: "photo_link")
-//                person.setValue(currentPerson?.verified, forKey: "verified")
-//                person.setValue(currentPerson?.rating, forKey: "rating")
-//                person.setValue(currentPerson?.login, forKey: "login")
+                let appDelegate = UIApplication.shared.delegate as? AppDelegate
+                if let context = appDelegate?.persistentContainer.viewContext {
+                    let user = User(context: context)
+                    user.name = currentPerson?.name
+                    user.surname = currentPerson?.surname
+                    user.patronymic = currentPerson?.patronymic
+                    user.group = currentPerson?.group
+                    user.user_id = currentPerson!.id
+                    user.email = currentPerson?.email
+                    user.phone = currentPerson?.phone
+                    user.photo_link = currentPerson?.photo_link
+                    user.verified = currentPerson!.verified
+                    user.rating = currentPerson!.rating
+                    user.login = currentPerson?.login
+                    print (user)
+                    try! context.save()
+                }
 
-
-                
                 let vc = UIStoryboard(name: "Main", bundle:nil)
                     .instantiateViewController(withIdentifier: "InitialViewController") as! UITabBarController
                 UIApplication.shared.windows.first?.rootViewController = vc

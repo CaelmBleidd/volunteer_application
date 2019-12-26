@@ -105,6 +105,24 @@ class SignUpViewController: UIViewController {
                 UserDefaults.standard.set(personFromServer?.id ,forKey: "currentUserId")
                 UserDefaults.standard.set(true, forKey: "isUserAuthentificated")
                 
+                let appDelegate = UIApplication.shared.delegate as? AppDelegate
+                if let context = appDelegate?.persistentContainer.viewContext {
+                    let user = User(context: context)
+                    user.name = personFromServer?.name
+                    user.surname = personFromServer?.surname
+                    user.patronymic = personFromServer?.patronymic
+                    user.group = personFromServer?.group
+                    user.user_id = personFromServer!.id
+                    user.email = personFromServer?.email
+                    user.phone = personFromServer?.phone
+                    user.photo_link = personFromServer?.photo_link
+                    user.verified = personFromServer!.verified
+                    user.rating = personFromServer!.rating
+                    user.login = personFromServer?.login
+                    
+                    try? context.save()
+                }
+                
                 let vc = UIStoryboard(name: "Main", bundle:nil)
                     .instantiateViewController(withIdentifier: "InitialViewController") as! UITabBarController
                 UIApplication.shared.windows.first?.rootViewController = vc
