@@ -36,6 +36,65 @@ class ServerApi {
         
     }
     
+    static func subscribe(eventId: Int64, userId: Int64, dGroup: DispatchGroup) {
+        let request = createRequest(endPointUrl: "/v1/event/subscribe?eventId=\(eventId)&userId=\(userId)", httpMethod: "POST", httpBody: nil)
+        let task = createSession().dataTask(with: request) { (data, response, error) in
+            guard let _ = data, error == nil else {
+                dGroup.leave()
+                return
+            }
+                       
+            if let response = response as? HTTPURLResponse {
+                print("statusCode: \(response.statusCode)")
+            }
+
+            dGroup.leave()
+        }
+        task.resume()
+    }
+    
+    static func unsubscribe(eventId: Int64, userId: Int64, dGroup: DispatchGroup) {
+        let request = createRequest(endPointUrl: "/v1/event/unsubscribe?eventId=\(eventId)&userId=\(userId)", httpMethod: "DELETE", httpBody: nil)
+        let task = createSession().dataTask(with: request) { (data, response, error) in
+            guard let _ = data, error == nil else {
+                dGroup.leave()
+                return
+            }
+                       
+            if let response = response as? HTTPURLResponse {
+                print("statusCode: \(response.statusCode)")
+            }
+
+            dGroup.leave()
+        }
+        task.resume()
+    }
+    
+    static func getEvents(dGroup: DispatchGroup, completion: @escaping ([Event]) -> Void) {
+        let request = createRequest(
+            endPointUrl: "/v1/event/\(UserDefaults.standard.integer(forKey: "currentUserId"))/events",
+            httpMethod: "GET", httpBody: nil)
+        let task = createSession().dataTask(with: request) { (data, response, error) in
+            guard let data = data, error == nil else {
+                dGroup.leave()
+                return
+            }
+            
+            if let response = response as? HTTPURLResponse {
+                print("statusCode: \(response.statusCode)")
+            }
+            
+            guard let events = try? JSONDecoder().decode([Event].self, from: data) else {
+                dGroup.leave()
+                return
+            }
+                
+            completion(events)
+            dGroup.leave()
+        }
+        task.resume()
+    }
+    
     static func auth(userCredentials: UserCredentials, dGroup: DispatchGroup, completion: @escaping (Person) -> Void) {
         guard let jsonBody = try? JSONEncoder().encode(userCredentials) else {
             //error

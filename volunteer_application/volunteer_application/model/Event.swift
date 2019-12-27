@@ -8,12 +8,12 @@
 
 import Foundation
 
-class Event {
-    init(id: Int64, title: String, description: String?, beginDate: Int64, endDate: Int64, location: String, starred: Bool) {
+class Event: Codable {
+    init(id: Int64, title: String, description: String?, startDate: Int64, endDate: Int64, location: String, starred: Bool) {
         self.id = id
         self.title = title
         self.description = description
-        self.beginDate = Date(milliseconds: beginDate)
+        self.startDate = Date(milliseconds: startDate)
         self.endDate = Date(milliseconds: endDate)
         self.location = location
         self.starred = starred
@@ -22,7 +22,7 @@ class Event {
     var id: Int64
     var title: String
     var description: String?
-    var beginDate: Date
+    var startDate: Date
     var endDate: Date
     var location: String
     var starred: Bool

@@ -26,7 +26,7 @@ class SingleEventViewController: UIViewController {
         
         if let event = event {
             titleLabel.text = event.title
-            descriptionView.text = "\(event.description ?? "There is no description for thid event")\n\nDate:\(event.beginDate.getOnlyDay()) –– \(event.endDate.getOnlyDay())\n\nLocation: \(event.location)"
+            descriptionView.text = "\(event.description ?? "There is no description for thid event")\n\nDate:\(event.startDate.getOnlyDay()) –– \(event.endDate.getOnlyDay())\n\nLocation: \(event.location)"
             
             if event.starred {
                 joinButton.setTitle("Leave", for: .normal)
@@ -39,10 +39,25 @@ class SingleEventViewController: UIViewController {
     
 
     @IBAction func joinLeaveAction(_ sender: Any) {
+        let group = DispatchGroup()
+        group.enter()
         if joinButton.titleLabel?.text == "Join" {
-            event?.starred = false
-        } else {
             event?.starred = true
+            DispatchQueue.main.async {
+                ServerApi.subscribe(eventId: self.event!.id, userId: Int64(UserDefaults.standard.integer(forKey: "currentUserId")), dGroup: group)
+            }
+            group.notify(queue: .main) {
+                self.joinButton.setTitle("Leave", for: .normal)
+            }
+        } else {
+            event?.starred = false
+            DispatchQueue.main.async {
+                ServerApi.unsubscribe(eventId: self.event!.id, userId: Int64(UserDefaults.standard.integer(forKey: "currentUserId")), dGroup: group)
+            }
+            group.notify(queue: .main) {
+                self.joinButton.setTitle("Join", for: .normal)
+                
+            }
         }
         
         //make request for participating

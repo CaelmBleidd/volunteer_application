@@ -204,6 +204,9 @@
                                 <segment title="My"/>
                                 <segment title="All"/>
                             </segments>
+                            <connections>
+                                <action selector="segmentedControlButtonClickAction:" destination="Mf1-g3-SQF" eventType="valueChanged" id="XMV-e8-mGI"/>
+                            </connections>
                         </segmentedControl>
                     </navigationItem>
                     <connections>

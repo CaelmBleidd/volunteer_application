@@ -7,19 +7,44 @@
 //
 
 import UIKit
+import CoreData
 
 class EventsViewController: UITableViewController {
     @IBOutlet weak var eventSelectSegmentControl: UISegmentedControl!
     
     var events = [Event]()
-
+    var allEvents = [Event]()
+    
+    private func update() {
+        let group = DispatchGroup()
+        group.enter()
+        DispatchQueue.main.async {
+            ServerApi.getEvents(dGroup: group) { eventsFromServer -> Void in
+                self.allEvents = eventsFromServer
+            }
+        }
+        
+        group.notify(queue: .main) {
+            self.events = self.allEvents.filter { $0.starred }
+            self.tableView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        update()
         
-
-        loadSampleEvents()
-        // Do any additional setup after loading the view.
+    }
+    
+    @IBAction func segmentedControlButtonClickAction(_ sender: UISegmentedControl) {
+       if sender.selectedSegmentIndex == 0 {
+        events = allEvents.filter { $0.starred }
+        tableView.reloadData()
+       }
+       else {
+        events = allEvents
+        tableView.reloadData()
+       }
     }
     
     override func didReceiveMemoryWarning() {
@@ -45,7 +70,7 @@ class EventsViewController: UITableViewController {
         let event = events[indexPath.row]
         cell.titleLabel.text = event.title
         cell.locationLabel.text = event.location
-        cell.dateLabel.text = "\(event.beginDate.getOnlyDay()) –– \(event.endDate.getOnlyDay())"
+        cell.dateLabel.text = "\(event.startDate.getOnlyDay()) –– \(event.endDate.getOnlyDay())"
         return cell
     }
     
@@ -59,9 +84,9 @@ class EventsViewController: UITableViewController {
      var location: String
      */
     private func loadSampleEvents() {
-        let event1 = Event(id: 0, title: "title", description: "description", beginDate: Date().millisecondsSince1970, endDate: Date().millisecondsSince1970, location: "St. Petersburg", starred: false)
-        let event2 = Event(id: 0, title: "title", description: "description", beginDate: Date().millisecondsSince1970, endDate: Date().millisecondsSince1970, location: "St. Petersburg", starred: true)
-        let event3 = Event(id: 0, title: "title", description: "description", beginDate: Date().millisecondsSince1970, endDate: Date().millisecondsSince1970, location: "St. Petersburg", starred: false)
+        let event1 = Event(id: 0, title: "title", description: "description", startDate : Date().millisecondsSince1970, endDate: Date().millisecondsSince1970, location: "St. Petersburg", starred: false)
+        let event2 = Event(id: 0, title: "title", description: "description", startDate : Date().millisecondsSince1970, endDate: Date().millisecondsSince1970, location: "St. Petersburg", starred: true)
+        let event3 = Event(id: 0, title: "title", description: "description", startDate : Date().millisecondsSince1970, endDate: Date().millisecondsSince1970, location: "St. Petersburg", starred: false)
         events.append(event1)
         events.append(event2)
         events.append(event3)
