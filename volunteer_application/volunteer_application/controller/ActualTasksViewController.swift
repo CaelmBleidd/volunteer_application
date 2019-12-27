@@ -11,15 +11,52 @@ import os.log
 
 class ActualTasksViewController: UITableViewController {
 
+    @IBOutlet weak var segmentControl: UISegmentedControl!
     //MARK: Properties
     var tasks = [Task]()
+    var allTasks = [Task]()
+
+    private func update() {
+        let group = DispatchGroup()
+        group.enter()
+        DispatchQueue.main.async {
+            ServerApi.getAllTasks(
+                userId: Int64(UserDefaults.standard.integer(forKey: "currentUserId")),
+                dGroup: group) {
+                    tasksFromServer -> Void in
+                    self.allTasks = tasksFromServer
+                }
+        }
+        
+        group.notify(queue: .main) {
+            self.tasks = self.allTasks.filter { $0.status == "new" }
+            self.tableView.reloadData()
+        }
+    }
     
-
-
+    @IBAction func segmentedControlButtonClickAction(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0 {
+            tasks = allTasks.filter { $0.status == "new" }
+            tableView.reloadData()
+        }
+        else if sender.selectedSegmentIndex == 1 {
+            tasks = allTasks.filter { $0.status == "proccess" }
+            tableView.reloadData()
+        } else {
+            tasks = allTasks
+            tableView.reloadData()
+        }
+    }
+    
+    @IBAction func refreshAction(_ sender: Any) {
+        segmentControl.selectedSegmentIndex = 0
+        update()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        loadSampleTask()
+        update()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,6 +81,14 @@ class ActualTasksViewController: UITableViewController {
         }
         let task = tasks[indexPath.row]
         cell.taskTitle.text = task.title
+        switch task.status {
+        case "proccess":
+            cell.backgroundColor = .yellow
+        case "done":
+            cell.backgroundColor = .green
+        default:
+            cell.backgroundColor = .none
+        }
         return cell
     }
 
@@ -115,12 +160,6 @@ class ActualTasksViewController: UITableViewController {
     }
     
     //MARK: Private Methods
-    private func loadSampleTask() {
-        let task1 = Task("First sample task")
-        let task2 = Task("Second sample")
-        let task3 = Task("Third sample task")
-        
-        tasks += [task1, task2, task3]
-    }
+
 
 }

@@ -98,36 +98,6 @@ class LoginViewController: UIViewController {
     }
     
     
-    /*
-     func saveName(name: String) {
-       //1
-       let appDelegate =
-       UIApplication.sharedApplication().delegate as! AppDelegate
-      
-       let managedContext = appDelegate.managedObjectContext!
-      
-       //2
-       let entity =  NSEntityDescription.entityForName("Person",
-         inManagedObjectContext:
-         managedContext)
-      
-       let person = NSManagedObject(entity: entity!,
-         insertIntoManagedObjectContext:managedContext)
-      
-       //3
-       person.setValue(name, forKey: "name")
-      
-       //4
-       var error: NSError?
-       if !managedContext.save(&error) {
-           println("Could not save \(error), \(error?.userInfo)")
-       }
-       //5
-       people.append(person)
-     }
-     */
-    @IBAction func forgotPasswordAction(_ sender: Any) {
-    }
     
     
     /*

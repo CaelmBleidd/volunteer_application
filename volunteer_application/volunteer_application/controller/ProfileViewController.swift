@@ -69,7 +69,7 @@ class ProfileViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-
+    
     @IBAction func logoutAction(_ sender: Any) {
         UserDefaults.standard.set(false, forKey: "isUserAuthentificated")
         UserDefaults.standard.removeObject(forKey: "currentUserId")

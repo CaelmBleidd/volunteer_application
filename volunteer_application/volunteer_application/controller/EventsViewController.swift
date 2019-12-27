@@ -36,6 +36,11 @@ class EventsViewController: UITableViewController {
         
     }
     
+    @IBAction func refreshAction(_ sender: Any) {
+        eventSelectSegmentControl.selectedSegmentIndex = 0
+        update()
+    }
+    
     @IBAction func segmentedControlButtonClickAction(_ sender: UISegmentedControl) {
        if sender.selectedSegmentIndex == 0 {
         events = allEvents.filter { $0.starred }

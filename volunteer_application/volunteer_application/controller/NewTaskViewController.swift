@@ -31,11 +31,16 @@ class NewTaskViewController: UIViewController, UITextFieldDelegate {
         if let task = task {
             navigationItem.title = "See task"
             titleTextField.text = task.title
+            bodyTextView.text = task.description
             
             titleTextField.isUserInteractionEnabled = false
             bodyTextView.isUserInteractionEnabled = false
             processButton.isHidden = false
             processButton.isEnabled = true
+            
+            let title = task.status == "proccess" ? "done" : "proccess"
+ 
+            processButton.setTitle(title, for: .normal)
         } else {
             processButton.isEnabled = false
             processButton.isHidden = true
@@ -59,7 +64,22 @@ class NewTaskViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func processAction(_ sender: Any) {
+        let group = DispatchGroup()
+        let status = processButton.titleLabel!.text
+        if status == "done" {
+            processButton.isEnabled = false
+            processButton.isHidden = true
+        } else {
+            processButton.setTitle("done", for: .normal)
+        }
+        group.enter()
+        DispatchQueue.main.async {
+            ServerApi.updateStatus(taskId: self.task!.id, status: status!, dGroup: group)
+        }
         
+        group.notify(queue: .main) {
+            self.task?.status = status ?? "new"
+        }
     }
     
     //MARK: Private Methods
@@ -98,7 +118,15 @@ class NewTaskViewController: UIViewController, UITextFieldDelegate {
         let title = titleTextField.text ?? ""
         let body = bodyTextView.text
         
-        task = Task(title)
+        task = Task(id: 0, title: title, description: body, status: "new")
+        let group = DispatchGroup()
+        group.enter()
+        
+        DispatchQueue.main.async {
+            ServerApi.createNewTask(task: self.task!, userId: Int64(UserDefaults.standard.integer(forKey: "currentUserId")), dGroup: group) { taskFromServer -> Void in
+                self.task = taskFromServer
+            }
+        }
     }
 
 }

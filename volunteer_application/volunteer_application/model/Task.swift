@@ -9,22 +9,20 @@
 import Foundation
 
 
-class Task {
-    init(_ title: String) {
+class Task: Codable {
+    
+    init(id: Int64, title: String, description: String?, status: String) {
+        self.id = id
         self.title = title
-        //todo
-        self.event = nil
+        self.description = description
+        self.status = status
     }
     
-    init(_ title: String, _ body: String?, _ event: Event) {
-        self.title = title
-        self.body = body
-        self.event = event
-    }
     
+    var id: Int64
     var title: String
-    var body: String? = nil
-    var event: Event?
+    var description: String?
+    var status: String
     
     //todo images
 }

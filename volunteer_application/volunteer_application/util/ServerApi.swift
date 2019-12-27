@@ -36,6 +36,29 @@ class ServerApi {
         
     }
     
+    static func getAllTasks(userId: Int64, dGroup: DispatchGroup,  completion: @escaping ([Task]) -> Void) {
+        let request = createRequest(endPointUrl: "/v1/task/\(userId)/tasks", httpMethod: "GET", httpBody: nil)
+        let task = createSession().dataTask(with: request) { (data, response, error) in
+            guard let data = data, error == nil else {
+                dGroup.leave()
+                return
+            }
+            
+            if let response = response as? HTTPURLResponse {
+                print("statusCode: \(response.statusCode)")
+            }
+            
+            guard let tasks = try? JSONDecoder().decode([Task].self, from: data) else {
+                dGroup.leave()
+                return
+            }
+                
+            completion(tasks)
+            dGroup.leave()
+        }
+        task.resume()
+    }
+    
     static func subscribe(eventId: Int64, userId: Int64, dGroup: DispatchGroup) {
         let request = createRequest(endPointUrl: "/v1/event/subscribe?eventId=\(eventId)&userId=\(userId)", httpMethod: "POST", httpBody: nil)
         let task = createSession().dataTask(with: request) { (data, response, error) in
@@ -97,13 +120,13 @@ class ServerApi {
     
     static func auth(userCredentials: UserCredentials, dGroup: DispatchGroup, completion: @escaping (Person) -> Void) {
         guard let jsonBody = try? JSONEncoder().encode(userCredentials) else {
-            //error
+            dGroup.leave()
             return
         }
         let request = createRequest(endPointUrl: "/v1/user/auth", httpMethod: "POST", httpBody: jsonBody)
         let task = createSession().dataTask(with: request) { (data, response, error) in
             guard let data = data, error == nil else {
-                //error
+                dGroup.leave()
                 return
             }
             
@@ -126,7 +149,7 @@ class ServerApi {
     
     static func addPassword(userCredentials: UserCredentials, dGroup: DispatchGroup) {
         guard let jsonBody = try? JSONEncoder().encode(userCredentials) else {
-            //error
+            dGroup.leave()
             return
         }
         let request = createRequest(endPointUrl: "/v1/user/register", httpMethod: "PUT", httpBody: jsonBody)
@@ -137,9 +160,49 @@ class ServerApi {
         task.resume()
     }
     
+    static func updateStatus(taskId: Int64, status: String, dGroup: DispatchGroup) {
+        let request = createRequest(endPointUrl: "/v1/task/\(taskId)/?status=\(status)", httpMethod: "PUT", httpBody: nil)
+        let task = createSession().dataTask(with: request) { (data, response, error) in
+            guard let _ = data, error == nil else {
+                dGroup.leave()
+                return
+            }
+            dGroup.leave()
+        }
+        task.resume()
+    }
+    
+    static func createNewTask(task: Task, userId: Int64, dGroup: DispatchGroup, completion: @escaping (Task) -> Void) {
+        guard let jsonBody = try? JSONEncoder().encode(task) else {
+            dGroup.leave()
+            return
+        }
+        
+        let request = createRequest(endPointUrl: "/v1/task/\(userId)/createTask", httpMethod: "POST", httpBody: jsonBody)
+        
+        let task = createSession().dataTask(with: request) { (data, response, error) in
+            guard let data = data, error == nil else {
+                dGroup.leave()
+                return
+            }
+            
+            guard let taskFromSever = try? JSONDecoder().decode(Task.self, from: data) else {
+                dGroup.leave()
+                return
+            }
+            
+            completion(taskFromSever)
+            dGroup.leave()
+            
+        }
+        
+        task.resume()
+    }
+    
     static func register(person: Person, dGroup: DispatchGroup, completion: @escaping (Person) -> Void) {
         guard let jsonBody = try? JSONEncoder().encode(person) else {
-            //error
+            dGroup.leave()
+            dGroup.leave()
             return
         }
         
@@ -147,11 +210,13 @@ class ServerApi {
         
         let task = createSession().dataTask(with: request) { (data, response, error) in
             guard let data = data, error == nil else {
-                //error
+                dGroup.leave()
+                dGroup.leave()
                 return
             }
             
             guard let personFromServer = try? JSONDecoder().decode(Person.self, from: data) else {
+                dGroup.leave()
                 dGroup.leave()
                 return
             }
@@ -163,82 +228,4 @@ class ServerApi {
         
         task.resume()
     }
-    
-    
-//    init() {
-//        let sessionConfiguration = URLSessionConfiguration.default
-//        session = URLSession(configuration: sessionConfiguration, delegate: nil, delegateQueue: nil)
-//    }
-//
-//    func login(_ login: String, _ password: String) -> Person? {
-//        let requestUrl = URL(string: "https://itmo-volunteer-application.herokuapp.com/api/v1/user/auth")
-//        var request = URLRequest(url: requestUrl!)
-//        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-//        request.httpMethod = "GET"
-//        let data = "login=\(login)&password=\(password)".data(using: String.Encoding.utf8)
-//        request.httpBody = data
-//
-//        let task = self.session.dataTask(with: request) { (data, response, error) in
-//            if let error = error {
-//                print("error: \(error)")
-//            } else {
-//                if let response = response as? HTTPURLResponse {
-//                    print("statusCode: \(response.statusCode)")
-//                }
-//                if let data = data, let dataString = String(data: data, encoding: .utf8) {
-//                    print ("data: \(dataString)")
-//                }
-//            }
-//        }
-//        task.resume()
-//        return nil
-//    }
-//
-//    func register(_ person: Person, _ password: String, completion: @escaping (Person) -> Void) {
-//        var currentUser: Person?
-//        let url = URL(string: "https://itmo-volunteer-application.herokuapp.com/api/v1/user")!
-//        var request = URLRequest(url: url)
-//        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-//        request.httpMethod = "POST"
-//        let parameters: [String: Any?] = [
-//            "email": person.email,
-//            "id": 0,
-//            "login": person.login,
-//            "name": person.firstName,
-//            "patronymic": person.patronymic,
-//            "phone": person.phoneNumber,
-//            "photoLink": person.photoLink,
-//            "rating": 1500,
-//            "surname": person.lastName,
-//            "verified": false,
-//            "group": person.group
-//        ]
-//        request.httpBody = parameters.percentEncoded()
-//
-//        let task = self.session.dataTask(with: request, completionHandler: { (data, response, error) in guard let data = data else
-//            { return }
-//            do {
-//                let user = try JSONDecoder().decode(Person.self, from: data)
-//                completion(user)
-//            } catch let error { /* errors */ }
-//
-//        })
-//        task.resume()
-//    }
-
-    
-//    let url = URL(string: "https://httpbin.org/get")!
-//    let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-//        if let error = error {
-//            print("error: \(error)")
-//        } else {
-//            if let response = response as? HTTPURLResponse {
-//                print("statusCode: \(response.statusCode)")
-//            }
-//            if let data = data, let dataString = String(data: data, encoding: .utf8) {
-//                print("data: \(dataString)")
-//            }
-//        }
-//    }
-//    task.resume()
 }
