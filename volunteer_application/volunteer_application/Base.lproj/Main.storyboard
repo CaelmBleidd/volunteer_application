@@ -447,7 +447,7 @@
         <scene sceneID="Pr2-KS-OHh">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="A9t-vq-xPX" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Tasks" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Tasks" image="checkmark.rectangle.fill" catalog="system" selectedImage="checkmark.rectangle.fill" id="acW-dT-cKf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="YlX-ou-mwQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -466,7 +466,7 @@
         <scene sceneID="4as-af-aHC">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lGn-MM-Iev" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Events" id="gE5-Ha-c3f"/>
+                    <tabBarItem key="tabBarItem" title="Events" image="calendar" catalog="system" selectedImage="calendar" id="gE5-Ha-c3f"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2RN-Ek-k7q">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -661,7 +661,7 @@
         <scene sceneID="Krm-Ln-cCC">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FXt-FN-DiC" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" id="qbO-MC-BZx"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="person" catalog="system" selectedImage="person" id="qbO-MC-BZx"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="p1L-Kc-fQ2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -696,8 +696,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="calendar" catalog="system" width="64" height="52"/>
+        <image name="checkmark.rectangle.fill" catalog="system" width="64" height="46"/>
         <image name="defaultPhoto" width="540" height="540"/>
-        <image name="first" width="30" height="30"/>
+        <image name="person" catalog="system" width="64" height="58"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Gjv-kY-8xk"/>
